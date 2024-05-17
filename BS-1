@@ -1,0 +1,21 @@
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        low=0
+        n=len(matrix) #no. of len row
+        m=len(matrix[0]) if n>0 else 0 #col len
+       
+        high=m*n-1 
+
+        while low<=high:
+            mid=(low+high)//2  #finding mid
+            mid_val=matrix[mid//m][mid%m]  #always will be in range og particular row and col=> e.g 0 for row n col 1 to 4
+
+            if target==mid_val:
+                return True
+            elif mid_val<target:
+                low=mid+1
+                
+            else:
+                high=mid-1
+                
+        return False
